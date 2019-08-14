@@ -1,0 +1,242 @@
+
+
+NAME: Yousuf Rajput
+
+FILENAME: README
+
+ID: cs30ffh
+
+DATE: December 7,2018
+
+
+
+                         HIGH LEVEL DESCRIPTION
+
+This program was responsible for showing the files that existed together. So, we
+created a strcuture that resembled a tree, and with that tree, we branched out
+and had files. Some files contained other files, and they were called
+directories. The files that did not contin other files were just files. We made
+this program that allowed us to view all the files and directories in the tree.
+We could also count how many files there were. Additionally, we could list these
+files and see when they were made. We could organize andlist these files based
+off their times or just their file names. All of these options allowed us to
+view the tree we made in various fashions. By doing this, we could build our
+tree, and then list and display that tree that consisted of directories and
+files.
+
+
+
+                             COMPILATION
+In order to compile this program, we had to be sure that we were in the correct
+directory, which was the pa4 directory. When in this directory, we could comile
+our code through make, which used the MAKEFILE to compile all the necessary
+files. We also compiled and ran the testers for nameCompare and timeCompare.
+This allowed us to compile and test those testers for those functions.
+
+
+                            RUNNING PROGRAM
+
+When we run the program, we run it with ./myls. This runs the main file and
+assures that we parse the correct flags and command line args. So for exmaple,
+if we run the flag -l, then we have indicated that we want to display the files
+in long format. If we have set the flags -fa, then we know the program is
+looking for a file and will also display the files that are hidden as well.
+
+                            NORMAL OUTPUT
+
+Normal output inlcludes the listing of the files out, for example. This carries
+out the basic operation and functionality of the program. Another normal output
+is if we run the program with the -c flag, which lists the count of the files
+and also lists the files out onto stdout. We can also set multiple flags and
+that would result in the output of integrating all of their functioanlities. For
+example, if we run the flags -la, a normal output would be to list all the files
+including the hidden files, in long format.
+
+                       ABNORMAL OUTPUT
+
+An abnormal output could include if, for example, you were to set a flag but
+another flag was set. Or if you didnt set one flag, but the output was stil of
+that flag. For example, if we run the flag -l, but all the hidden files were
+also listed, that would mean the output is incorrect and the way the flags were
+handles was incorrect.
+
+                        TESTING PROGRAM
+
+Testing this program consisted of multiple aspects. First, unit testing was the
+basic form of testing we were able to do on some of the functions. Through these
+unit tests, I was able to test various cases to see if the output was normal and
+the behavior was proper.
+
+Additional to this, print statements were a great aid in guiding my testing. It
+allowed me to view abnormal behavior and output, which allwed me to see parts of
+the cpde that needed some fixing. It also allowed me to pinpoint specific parts
+and see whther or not the code was running at specific parts.
+
+ANother form of testing that I carried out was creating a test direcotory of my
+own. By doing this, when I ran ./myls on it, I ould see if the tree was built
+properly, if it was being counted properly, if it was being listed and depicted
+properly. By doing this, I could trace the tree and make sure that it was being
+ran thorugh as expected. 
+
+Apart from this, I also just tried numerous dif cases and checked to see that
+the behavior was running as expected. Trying various input allowed me to see the
+various output that we expected.
+
+
+
+                MACHINE CODE TRANSLATION
+
+1) 
+
+add r11,r13,4
+
+cond - 1110 
+op- 00
+i - 1 cmd - 0100
+s - 0 
+Rn - 1101
+Rd - 1011
+src2 - 0000 0000 0100
+
+                               ANSWER: 0xE28DB004
+
+2)
+
+str r0,[r11,-8]
+
+cond - 1110
+op - 01
+I - 0
+P - 1
+U - 0
+B - 0
+W - 0
+L - 0
+Rn - 1011
+Rd - 0000
+src2 - 0000 0000 1000
+
+                               ANSWER: 0xE50B0008
+
+3) 
+
+ldr r0,[r11,-8]
+
+cond - 1110
+op - 01
+I - 0
+P - 1
+U - 0
+B - 0
+W - 0
+L - 1
+Rn - 1011
+Rd - 0000
+src2 - 0000 0000 1000
+
+                               ANSWER: 0xE51B0008
+
+4) 
+
+bge else_if
+
+cond - 1010
+op - 10
+1L - 10
+
+imm - 0000 0000 0000 0000 0000 0001
+
+                              ANSWER: 0xAA000001
+
+5)
+
+ble else
+
+cond - 1101
+op - 10
+1L - 10
+imm - 0000 0000 0000 0000 0000 0001
+
+                              ANSWER: 0xDA000001
+
+6)
+
+sub r13,r11,4
+
+cond - 1110 
+op - 00
+I - 1
+cmd - 0010
+S - 0
+Rn - 1011
+Rd - 1101
+src2 - 0000 0000 0100
+
+                             ANSWER: 0xE24BD004
+
+
+
+
+
+                            ### README QUESTIONS ###
+
+1) 
+
+    After pushing lr and fp onto the stack, the first local variable is then
+    pushed,ptrToIsHidden. Because it is a pointer, it is 4 bytes. After that, the
+    local var is then pushed, which is a char array of size 20 bytes. Finally the
+    parameter is then pushed, filename. Because it is a pointer, it will be 4 ptrs.
+  filename         filename        filename       filename
+   buf[0]           buf[1]          buf[2]         buf[3]
+   buf[4]           buf[5]          buf[6]         buf[7]
+   buf[8]           buf[9]          buf[10]        buf[11]
+   buf[12]          buf[13]         buf[14]        buf[15]
+   buf[16]          buf[17]         buf[18]        buf[19]
+ ptrToIsHidden  ptsToIsHidden  ptsToIsHidden  ptrToIsHidden
+    fp              fp              fp              fp
+    lr              lr              lr              lr
+
+2) 
+
+    21 because the buffer size is 20.
+
+3) 
+
+    ptrToIsHidden will be affected because the memory address above buf will be
+    overflowed/overwritten by the characters at the end of the filename. 
+
+4)
+
+    The address when we gdb is 0x00011cd4. We print secret() out and get the
+    memory address.
+
+5) 
+
+    \xd4\x1c\x01
+
+6)
+
+    aasasdfdfatjfghfdfg\xd4\x1c\x01
+
+    What we do is fill the buf up so that secret overflows to ptrIsHidden.
+    Because the entire buf is filled up, we have forced secret() to be called,
+    so the letters we pass in at the beginning must be exactly 20 char so that
+    the next 4 bytes, ptsIsHidden, can be filled up by secret().
+    
+
+7)
+    Once we filled up the buffer and forced secret() to be called, a train
+    passed by the terminal that read "Good Job Hacker." This showed that this
+    was the functionality of secret().  
+
+
+8)
+    One thing that can be done if instead of strcpy, use strncpy. With this
+    call, if there are any bytes to be copied over to destination that exceed
+    the size, they will be padded over to null bytes. 
+
+    An alternative method that can be done is to expand the size of buffer so
+    that the buffer is not overflowed. This will not cause secret() to be
+    overflown into ptrToIsHidden, but this does not serve to be a permanent
+    solution because it would still be possible to overflow by passing in a
+    larger char size.
